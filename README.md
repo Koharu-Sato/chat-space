@@ -5,7 +5,7 @@
 |------|----|-------|
 |name|string|add_index|
 |email|string|null: false, unique :true|
-|passworrd|string|null: false|
+|password|string|null: false|
 
 ### Association
 - has_many :comments
