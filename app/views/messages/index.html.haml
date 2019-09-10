@@ -1,4 +1,3 @@
-!!!
 
 .header
   .header__logo
@@ -8,21 +7,22 @@
   .chat-side
     .chat-side__header
       .chat-side__header__box
-        %p.chat-side__header__box__user test-user 
+        %p.chat-side__header__box__user 
+          test-user
         %ul.chat-side-header__box__menu 
-          %a.chat-side__header__box__menu__new-group
+          =link_to "", class:"chat-side__header__box__menu__new-group" do
             = fa_icon 'edit', class: "menu__new-group--icon" 
-          %a.chat-side__header__box__menu__edit-user<
+          =link_to "", class:"chat-side__header__box__menu__edit-user" do
             = fa_icon 'cog', class: "menu__edit-user--icon"
 
     .chat-side__groups
-      %a
+      = link_to root_path do
         .chat-side__groups__group
           %p.chat-side__groups__group__name 
-            test-user
+            aaaa
           %p.chat-side__groups__group__latest-message 
-            さようなら
-      %a
+            aaaaa
+      = link_to root_path do
         .chat-side__groups__group
           %p.chat-side__groups__group__name 
             Sample-group
@@ -38,7 +38,8 @@
           Member：
           %li.chat-main__header__left-box__member-list__member<
             test-user
-      %a.chat-main__header__edit-btn Edit
+      = link_to root_path, class: "chat-main__header__edit-btn" do
+        Edit
 
     .chat-main__messages
       .chat-main__messages__message
@@ -53,7 +54,6 @@
           %p.chat-main__messages__message__upper-info__date 2019/09/08(Sun) 11:50:58
         %p.chat-main__messages__message__text
           さようならー
-      
     .chat-main__form
       .chat-main__form__new-text
         .chat-main__form__new-text__input-box
@@ -61,6 +61,7 @@
             %label.chat-main__form__new-text__input-box__text__upload-file{for: "message-image"}
               %i.fa.fa-picture-o
                 %input{ class: "chat__main__form__new-text__input-box__text__upload-file", type: "file", name: "message[image]", id: "message-image"}
-        %a.chat-main__form__new-text__submit-btn Send
+        = link_to "", class: "chat-main__form__new-text__submit-btn" do
+          Send
 
   

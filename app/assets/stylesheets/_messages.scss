@@ -1,5 +1,9 @@
 $blue-color: #38aef0;
 $white-color: #ffffff;
+a {
+  color: $white-color;
+  text-decoration-line: none;
+}
 
 .header {
   background-color: $blue-color;
@@ -45,16 +49,19 @@ $white-color: #ffffff;
         &__new-group{
           cursor: pointer;
           padding-left: 5px;
+          color: $white-color;
         }
         &__edit-user{
           cursor: pointer;
           padding-left: 5px;
+          color: $white-color;
         }
       }
     }
   }
 
   &__groups {
+    color: $white-color;
     height: calc(100% - 100px);
     background-color: #2f3e51;
     padding: 0 20px;
