@@ -18,14 +18,11 @@
     = render @messages
 
   .chat-main__form
-    .chat-main__form__box
-      = form_for [@group, @message] do |f|
-        = f.text_field :body, class: 'new_message__form', placeholder: 'type a message'
-        .new-message__mask
-          = f.label :image, class: 'chat-new-message__mask__image' do
-            = fa_icon 'picture-o', class: 'icon'
-            = f.file_field :image, class: 'hidden'
-        = f.submit 'Send', class: 'new-message__submit'
+    = form_for [@group, @message] do |f|
+      .chat-main__form__box
+        = f.text_field :body, class: 'chat-main__form__box__form', placeholder: 'type a message'
+        = f.label :image, class: 'chat-main__form__box__image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'chat-main__form__submit'
 
-    -# .chat-main__form__new-text
-    -#   .chat-main__form__new-text__input-box

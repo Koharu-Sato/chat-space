@@ -65,33 +65,36 @@
     width: calc(100% - 380px);
     background-color: #eeeeee;
     padding: 25px 40px;
+    .new_message {
+      display: flex;
+    }
     &__box {
-      .new_message{
-        display: flex;
-        &__form{
-          // width: 100%;
-          margin-right: 10px;
-        }
-        &__mask {
-          height: 50px;
-          width: 91%;
-          border-style: none;
-          padding-left: 10px;
-          &__image {
-            .hidden {
-            display: none;
-            }
-          }
-        }
-        &__submit {
-          float: right;
-          background-color: $blue-color;
-          color: $white-color;
-          padding: 0 30px;
-          margin-left: 15px;
-          cursor: pointer;
+      width: 100%;
+      position: relative;
+      background-color: $white-color;
+      padding-right: 10px;
+      margin-right: 10px;
+      &__form{
+        height: 50px;
+        width: 95%;
+        padding-left: 10px;
+        border-style: none;
+      }
+      &__image {
+        font-size: 1.3rem;
+        cursor: pointer;
+        .hidden {
+        display: none;
         }
       }
+    }
+    &__submit {
+      float: right;
+      background-color: $blue-color;
+      color: $white-color;
+      padding: 0 30px;
+      margin-left: 15px;
+      cursor: pointer;
     }
   }
 }
