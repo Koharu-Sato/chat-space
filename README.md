@@ -8,7 +8,7 @@
 |password|string|null: false|
 
 ### Association
-- has_many :comments
+- has_many :messages
 - has_many :groups_users
 - has_many :groups, through: :groups_users
 
@@ -32,7 +32,7 @@
 - belongs_to :user
 - belongs_to :group
 
-## commentsテーブル
+## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |body|text|null: false|

@@ -1,67 +1,41 @@
 
-.header
-  .header__logo
-    グループを作成しました
 
-.wrapper
-  .chat-side
-    .chat-side__header
-      .chat-side__header__box
-        %p.chat-side__header__box__user 
+= render 'shared/side_bar'
+
+
+.chat-main
+  .chat-main__header
+    .chat-main__header__left-box
+      %h2.chat-main__header__left-box__current-group
+        test-group
+      %ul.chat-main__header__left-box__member-list<
+        Member：
+        %li.chat-main__header__left-box__member-list__member<
           test-user
-        %ul.chat-side-header__box__menu 
-          =link_to "", class:"chat-side__header__box__menu__new-group" do
-            = fa_icon 'edit', class: "menu__new-group--icon" 
-          =link_to "", class:"chat-side__header__box__menu__edit-user" do
-            = fa_icon 'cog', class: "menu__edit-user--icon"
+    = link_to "/groups/#{@group}/edit", class: "chat-main__header__edit-btn" do
+      Edit
 
-    .chat-side__groups
-      = link_to root_path do
-        .chat-side__groups__group
-          %p.chat-side__groups__group__name 
-            aaaa
-          %p.chat-side__groups__group__latest-message 
-            aaaaa
-      = link_to root_path do
-        .chat-side__groups__group
-          %p.chat-side__groups__group__name 
-            Sample-group
-          %p.chat-side__groups__group__latest-message 
-            hello!
-
-  .chat-main
-    .chat-main__header
-      .chat-main__header__left-box
-        %h2.chat-main__header__left-box__current-group
-          test-group
-        %ul.chat-main__header__left-box__member-list<
-          Member：
-          %li.chat-main__header__left-box__member-list__member<
-            test-user
-      = link_to root_path, class: "chat-main__header__edit-btn" do
-        Edit
-
-    .chat-main__messages
-      .chat-main__messages__message
-        .chat-main__messages__message__upper-info
-          %p.chat-main__messages__message__upper-info__talker test-user
-          %p.chat-main__messages__message__upper-info__date 2019/09/08(Sun) 11:50:58
-        %p.chat-main__messages__message__text
-          こんにちは！
-      .chat-main__messages__message
-        .chat-main__messages__message__upper-info
-          %p.chat-main__messages__message__upper-info__talker test-user
-          %p.chat-main__messages__message__upper-info__date 2019/09/08(Sun) 11:50:58
-        %p.chat-main__messages__message__text
-          さようならー
-    .chat-main__form
-      .chat-main__form__new-text
-        .chat-main__form__new-text__input-box
-          %input.chat-main__form__new-text__input-box__text{ placeholder: "type a message", type: "text", name: "message[content]" }
-            %label.chat-main__form__new-text__input-box__text__upload-file{for: "message-image"}
-              %i.fa.fa-picture-o
-                %input{ class: "chat__main__form__new-text__input-box__text__upload-file", type: "file", name: "message[image]", id: "message-image"}
-        = link_to "", class: "chat-main__form__new-text__submit-btn" do
-          Send
+  .chat-main__messages
+    .chat-main__messages__message
+      .chat-main__messages__message__upper-info
+        %p.chat-main__messages__message__upper-info__talker test-user
+        %p.chat-main__messages__message__upper-info__date 2019/09/08(Sun) 11:50:58
+      %p.chat-main__messages__message__text
+        こんにちは！
+    .chat-main__messages__message
+      .chat-main__messages__message__upper-info
+        %p.chat-main__messages__message__upper-info__talker test-user
+        %p.chat-main__messages__message__upper-info__date 2019/09/08(Sun) 11:50:58
+      %p.chat-main__messages__message__text
+        さようならー
+  .chat-main__form
+    .chat-main__form__new-text
+      .chat-main__form__new-text__input-box
+        %input.chat-main__form__new-text__input-box__text{ placeholder: "type a message", type: "text", name: "message[content]" }
+          %label.chat-main__form__new-text__input-box__text__upload-file{for: "message-image"}
+            %i.fa.fa-picture-o
+              %input{ class: "chat__main__form__new-text__input-box__text__upload-file", type: "file", name: "message[image]", id: "message-image"}
+      = link_to "", class: "chat-main__form__new-text__submit-btn" do
+        Send
 
   

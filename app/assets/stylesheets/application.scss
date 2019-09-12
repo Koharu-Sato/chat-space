@@ -1,3 +1,10 @@
-@import './reset';
+@import 'config/reset';
+@import 'config/colors';
 @import 'font-awesome';
+@import 'modules/wrapper';
+@import 'modules/side_bar';
+@import 'modules/chat';
+@import 'modules/flash';
+@import "modules/user";
+@import 'modules/group';
 @import 'messages';

@@ -1,0 +1,99 @@
+.chat-main {
+  width: calc(100% - 300px);
+  height: 100%;
+  float: left;
+  padding-top: 30px;
+  &__header {
+    padding: 0 40px;
+    height: 100px;
+    border-bottom: solid 1px #eeeeee; 
+    display: flex;
+    &__left-box {
+      padding-top: 35px;
+      &__current-group {
+        font-size: 20px;
+        color: #333333;
+        margin-bottom: 15px;
+      }
+      &__member-list {
+        display: flex;
+        font-size: 12px;
+        color: #999999;
+      }
+    }
+    &__edit-btn {
+      float: right;
+      margin-top: 28px;
+      position: absolute;
+      right: 40px;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 20px;
+      border: solid 1px $blue-color;
+      color: $blue-color;
+      cursor: pointer;
+    }
+  }
+  &__messages {
+    background-color: #fafafa;
+    height: 600px;
+    padding-top: 26px;
+    padding-left: 40px;
+    padding-right: 40px;
+    overflow: auto;
+    &__message {
+      padding: 20px 0;
+      &__upper-info {
+        display: flex;
+        padding-bottom: 10px;
+        &__talker {
+          font-size: 16px;
+          font-weight: bold;
+        }
+        &__date {
+          padding-left: 10px;
+          font-size: 12px;
+          color: #999999;
+        }
+      }
+    }
+  }
+  &__form {
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: calc(100% - 380px);
+    line-height: 50px;
+    background-color: #eeeeee;
+    padding: 25px 40px;
+    &__new-text{
+      width: 100%;
+      margin-right: 10px;
+      display: flex;
+      &__input-box {
+        width: 100%;
+        background-color: $white-color;
+          &__text {
+            height: 50px;
+            width: 91%;
+            border-style: none;
+            padding-left: 10px;
+            &__upload-file {
+              cursor: pointer;
+              input {
+              display: none;
+              }
+            }
+          }
+        }
+      &__submit-btn {
+        float: right;
+        background-color: $blue-color;
+        color: $white-color;
+        padding: 0 30px;
+        margin-left: 15px;
+        cursor: pointer;
+      }
+    }
+  }
+}
