@@ -1,7 +1,7 @@
 $(function() {
   function buildHTML(message){
 
-    let imageHTML = message.image ? `<img class="lower-message__image" src="${message.image.url}"/>` :``
+    let imageHTML = message.image ? `<img class="lower-message__image" src="${message.image.url}"/>` : ``
 
     let html = `<div class="chat-main__messages__message">
                   <div class="chat-main__messages__message__upper-info">
@@ -36,8 +36,8 @@ $(function() {
     .done(function(data){
       let html = buildHTML(data);
       $('.chat-main__messages').append(html)
-      $('.chat-main__form__box__form').val('')
       $('.chat-main__messages').animate({ scrollTop: $('.chat-main__messages')[0].scrollHeight});
+      $('#new_message')[0].reset();
       $('.chat-main__form__submit').prop('disabled', false);
     })
     .fail(function(){
