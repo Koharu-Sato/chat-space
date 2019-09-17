@@ -1,7 +1,7 @@
 $(function() {
   function buildHTML(message){
 
-    let imageHTML = message.image ? `<img class="lower-message__image" src="${message.image.url}"/>` : ``
+    let imageHTML = message.image ? `<img class="lower-message__image" src="${message.image}"/>` : ``
 
     let html = `<div class="chat-main__messages__message">
                   <div class="chat-main__messages__message__upper-info">
