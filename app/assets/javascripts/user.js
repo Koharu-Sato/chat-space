@@ -28,8 +28,8 @@ $(function() {
 
   function appendChatGroup(hash) {
     let html = `<div class='chat-group-user'>
-                  <input name='group[user_ids][]' type='hidden' value='${ hash.id }'>
-                    <p class='chat-group-user__name'>${ hash.name }</p>
+                  <input name='group[user_ids][]' type='hidden' value='${ hash.userId }'>
+                    <p class='chat-group-user__name'>${ hash.userName }</p>
                   <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
                 </div>`
     chat_group_user_list.append(html)
@@ -63,14 +63,13 @@ $(function() {
     });
 
     $(document).on("click", ".user-search-add.chat-group-user__btn.chat-group-user__btn--add", function() {
-        let id = $(this).attr('data-user-id');
-        let name = $(this).attr('data-user-name');
-        let hash = { id: id, name: name }
-      $(this).closest('div').remove();
+        let hash = $(this).data();
+        console.log(hash)
+      $(this).parent().remove();
       appendChatGroup(hash)
     });
   });
   $(document).on("click", ".user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn", function() {
-    $(this).closest('div').remove();
+    $(this).parent().remove();
   });
 });
