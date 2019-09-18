@@ -64,7 +64,6 @@ $(function() {
 
     $(document).on("click", ".user-search-add.chat-group-user__btn.chat-group-user__btn--add", function() {
         let hash = $(this).data();
-        console.log(hash)
       $(this).parent().remove();
       appendChatGroup(hash)
     });
