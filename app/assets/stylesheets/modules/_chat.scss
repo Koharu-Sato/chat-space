@@ -18,6 +18,9 @@
         display: flex;
         font-size: 12px;
         color: #999999;
+        &__member {
+          padding-left: 3px;
+        }
       }
     }
     &__edit-btn {
