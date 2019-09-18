@@ -1,8 +1,15 @@
 $(function() {
 
   let search_user_list = $('#user-search-result')
-
   let chat_group_user_list = $('.chat-group-users.js-add-user')
+
+  function appendUserId(users_id) {
+    $('.chat-group-user.clearfix.js-chat-member').each(function(){
+      let user_id = $(this).attr('id');
+      users_id.push(user_id);
+    });
+    return users_id;
+  }
 
   function appendUser(user) {
     let html = `<div class="chat-group-user clearfix">
@@ -30,12 +37,13 @@ $(function() {
 
   $('#user-search-field').on("keyup", function() {
     let input = $('#user-search-field').val();
+    let users_id = [];
+    appendUserId(users_id)
 
-    
     $.ajax({
       type: 'GET',
       url: '/users',
-      data: { keyword: input },
+      data: { keyword: input, group_users_id: users_id },
       dataType: 'json'
     })
 
@@ -55,9 +63,9 @@ $(function() {
     });
 
     $(document).on("click", ".user-search-add.chat-group-user__btn.chat-group-user__btn--add", function() {
-       let id = $(this).attr('data-user-id');
-       let name = $(this).attr('data-user-name');
-       let hash = { id: id, name: name }
+        let id = $(this).attr('data-user-id');
+        let name = $(this).attr('data-user-name');
+        let hash = { id: id, name: name }
       $(this).closest('div').remove();
       appendChatGroup(hash)
     });
