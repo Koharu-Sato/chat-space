@@ -3,7 +3,7 @@ $(function() {
 
     let imageHTML = message.image ? `<img class="lower-message__image" src="${message.image}"/>` : ``
 
-    let html = `<div class="chat-main__messages__message">
+    let html = `<div class="chat-main__messages__message" data-id="${message.id}">
                   <div class="chat-main__messages__message__upper-info">
                     <p class="chat-main__messages__message__upper-info__talker">
                       ${message.user_name}
@@ -43,5 +43,32 @@ $(function() {
     .fail(function(){
       alert('error');
     })
-  })
+  });
+
+  $(function() {
+    if (location.href.match(/\/groups\/\d+\/messages/)) {
+      setInterval(reloadMessages, 5000)
+    };
+  });
+  let reloadMessages = function() {
+    last_message_id = $('.chat-main__messages__message:last').data('id');
+    $.ajax({
+      url: 'api/messages',
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id }
+    })
+    .done(function(messages) {
+      if (messages != null) {
+        $.each(messages, function(index, message) {
+          let insertHTML = buildHTML(message);
+          $('.chat-main__messages').append(insertHTML);
+          $('.chat-main__messages').animate({ scrollTop: $('.chat-main__messages')[0].scrollHeight});
+        });
+      };
+    })
+    .fail(function() {
+      alert('自動更新に失敗しました');
+    });
+  };
 }); 

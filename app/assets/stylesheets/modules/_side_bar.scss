@@ -35,7 +35,8 @@
 
 
   .groups {
-    height: calc(100% - 100px);
+    overflow: auto;
+    height: 700px;
     background-color: #2f3e51;
     padding: 20px 20px;
     .group {
