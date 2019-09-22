@@ -3,13 +3,13 @@ $(function() {
   let search_user_list = $('#user-search-result')
   let chat_group_user_list = $('.chat-group-users.js-add-user')
 
-  function appendUserId(users_id) {
-    $('.chat-group-user.clearfix.js-chat-member').each(function(){
-      let user_id = $(this).attr('id');
-      users_id.push(user_id);
-    });
-    return users_id;
-  }
+  // function appendUserId(users_id) {
+  //   $('.chat-group-user.clearfix.js-chat-member').each(function(){
+  //     let user_id = $(this).attr('id');
+  //     users_id.push(user_id);
+  //   });
+  //   return users_id;
+  // }
 
   function appendUser(user) {
     let html = `<div class="chat-group-user clearfix">
@@ -37,25 +37,28 @@ $(function() {
 
   $('#user-search-field').on("keyup", function() {
     let input = $('#user-search-field').val();
-    let users_id = [];
-    appendUserId(users_id)
+    // let users_id = [];
+    // appendUserId(users_id);
 
     $.ajax({
       type: 'GET',
       url: '/users',
-      data: { keyword: input, group_users_id: users_id },
+      data: { keyword: input },
       dataType: 'json'
     })
 
     .done(function(users) {
       $('#user-search-result').empty();
-      if (users.length !== 0) {
+      if (users.length !== 0 && input.length !== 0) {
         users.forEach(function(user) {
           appendUser(user);
         });
       }
+      else if (input.length == 0) {
+        $('#user-search-result').find('.chat-group-user.clearfix').remove();
+      }
       else {
-        appendErrMsgToHTML("該当するユーザーはいません")
+        appendErrMsgToHTML("該当するユーザーはいません");
       }
     })
     .fail(function() {
