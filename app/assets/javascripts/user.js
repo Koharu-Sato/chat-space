@@ -14,7 +14,7 @@ $(function() {
   function appendUser(user) {
     let html = `<div class="chat-group-user clearfix">
                   <p class="chat-group-user__name">${ user.name } </p>
-                  <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${ user.id }" data-user-name="${ user.name }">追加</a>
+                  <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" id="add-btn" data-user-id="${ user.id }" data-user-name="${ user.name }">追加</a>
                 </div>`
     search_user_list.append(html);
   }
@@ -26,11 +26,11 @@ $(function() {
     search_user_list.append(html)
   }
 
-  function appendChatGroup(hash) {
-    let html = `<div class='chat-group-user'>
-                  <input name='group[user_ids][]' type='hidden' value='${ hash.userId }'>
-                    <p class='chat-group-user__name'>${ hash.userName }</p>
-                  <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
+  function appendChatGroup(id, name) {
+    let html = `<div class='chat-group-user' id="group-member" >
+                  <input name='group[user_ids][]' type='hidden' value='${ id }'>
+                    <p class='chat-group-user__name'>${ name }</p>
+                  <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn' id="remove-btn" >削除</a>
                 </div>`
     chat_group_user_list.append(html)
   }
@@ -53,25 +53,24 @@ $(function() {
         users.forEach(function(user) {
           appendUser(user);
         });
-      }
-      else if (input.length == 0) {
+      } else if (input.length == 0) {
         $('#user-search-result').find('.chat-group-user.clearfix').remove();
-      }
-      else {
+      } else {
         appendErrMsgToHTML("該当するユーザーはいません");
       }
     })
     .fail(function() {
       alert('ユーザー検索に失敗しました');
     });
-
-    $(document).on("click", ".user-search-add.chat-group-user__btn.chat-group-user__btn--add", function() {
-        let hash = $(this).data();
-      $(this).parent().remove();
-      appendChatGroup(hash)
-    });
   });
-  $(document).on("click", ".user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn", function() {
+
+  $('#user-search-result').on("click", "#add-btn", function() {
+    let id = $(this).data('user-id');
+    let name = $(this).data('user-name')
+    $(this).parent().remove();
+    appendChatGroup(id, name);
+  });
+  $(document).on("click", "#remove-btn", function() {
     $(this).parent().remove();
   });
 });
