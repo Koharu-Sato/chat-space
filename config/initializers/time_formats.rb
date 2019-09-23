@@ -1,4 +1,4 @@
-Date::DATE_FORMATS[:default] = "%Y年%m月%d日"
-Date::DATE_FORMATS[:date] = "%m/%d"
-DateTime::DATE_FORMATS[:default] = "%Y年%m月%d日 %H時%M分"
-DateTime::DATE_FORMATS[:datetime] = "%Y/%m/%d %H:%M"
+wd = ["日", "月", "火", "水", "木", "金", "土"]
+time = Time.now
+Time::DATE_FORMATS[:default] = "%Y/%m/%d(#{wd[time.wday]}) %H:%M"
+

@@ -3,7 +3,7 @@ $(function() {
 
     let imageHTML = message.image ? `<img class="lower-message__image" src="${message.image}"/>` : ``
 
-    let html = `<div class="chat-main__messages__message" data-id="${message.id}">
+    let html = `<div class="chat-main__messages__message" data-message-id="${message.id}">
                   <div class="chat-main__messages__message__upper-info">
                     <p class="chat-main__messages__message__upper-info__talker">
                       ${message.user_name}
@@ -21,6 +21,7 @@ $(function() {
                 </div>`;
     return html;
   }
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     let formData = new FormData(this);
@@ -50,8 +51,10 @@ $(function() {
       setInterval(reloadMessages, 5000)
     };
   });
+
   let reloadMessages = function() {
-    last_message_id = $('.chat-main__messages__message:last').data('id');
+    last_message_id = $('.chat-main__messages__message:last').data('message-id');
+    
     $.ajax({
       url: 'api/messages',
       type: 'get',
@@ -59,7 +62,7 @@ $(function() {
       data: {id: last_message_id }
     })
     .done(function(messages) {
-      if (messages != null) {
+      if (messages != null ) {
         $.each(messages, function(index, message) {
           let insertHTML = buildHTML(message);
           $('.chat-main__messages').append(insertHTML);
