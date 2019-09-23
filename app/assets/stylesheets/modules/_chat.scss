@@ -2,6 +2,7 @@
   width: calc(100% - 300px);
   height: 100%;
   float: left;
+  position:relative;
   &__header {
     padding: 0 40px;
     height: 100px;
@@ -61,29 +62,31 @@
     }
   }
   &__form {
-    position: fixed;
+    position: absolute;
     bottom: 0;
-    height: 50px;
-    line-height: 50px;
-    width: calc(100% - 380px);
-    background-color: #eeeeee;
-    padding: 25px 40px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 90px;
+    background-color: #ddd;
+    padding: 20px 30px 20px 40px;
     .new_message {
       display: flex;
     }
     &__box {
       width: 100%;
       position: relative;
-      background-color: $white-color;
-      padding-right: 10px;
-      margin-right: 10px;
       &__form{
         height: 50px;
-        width: 95%;
+        width: 100%;
         padding-left: 10px;
+        color :#434a54;
         border-style: none;
+        margin-right: 15px;
       }
       &__image {
+        position: absolute;
+        top: 10px;
+        right: 10px;
         font-size: 1.3rem;
         cursor: pointer;
         .hidden {
@@ -92,11 +95,11 @@
       }
     }
     &__submit {
-      float: right;
+      height: 50px;
       background-color: $blue-color;
       color: $white-color;
       padding: 0 30px;
-      margin-left: 15px;
+      margin-left: 20px;
       cursor: pointer;
     }
   }
